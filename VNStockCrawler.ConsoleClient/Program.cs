@@ -10,12 +10,16 @@ namespace VNStockCrawler.ConsoleClient
         public static async Task Main(string[] args)
         {
             var fromDate = new DateTime(2009, 1, 1);
-            var toDate = new DateTime(2009, 1, 31);
+            var toDate = new DateTime(2021, 06, 18);
 
             var parser = new VnDirectResponseParser();
             var client = new VnDirectHttpClient(parser);
-            var result = (await client.CrawlAsync("VCB", fromDate, toDate)).ToList();
-            Console.WriteLine(result);
+            var excelWriter = new EPPlusExcelWriter();
+
+            var stocks = await client.CrawlAsync("VCB", fromDate, toDate);
+            await excelWriter.SaveToFileAsync(stocks);
+
+            Console.WriteLine($"The file have been saved in {excelWriter.SaveFilePath} successfully.");
         }
     }
 }

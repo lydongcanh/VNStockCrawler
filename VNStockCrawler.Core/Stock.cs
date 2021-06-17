@@ -10,13 +10,13 @@ namespace VNStockCrawler.Core
 
         public DateTime Date { get; set; }
 
-        public double OpenValue { get; set; }
+        public double Open { get; set; }
 
-        public double CloseValue { get; set; }
+        public double Close { get; set; }
 
-        public double HighValue { get; set; }
+        public double High { get; set; }
 
-        public double LowValue { get; set; }
+        public double Low { get; set; }
 
         public double AverageValue { get; set; }
 

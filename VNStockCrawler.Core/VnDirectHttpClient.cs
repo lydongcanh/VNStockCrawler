@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
@@ -32,7 +33,7 @@ namespace VNStockCrawler.Core
             response.EnsureSuccessStatusCode();
 
             var responseContent = await response.Content.ReadAsStringAsync();
-            return _stockParser.Parse(responseContent);
+            return _stockParser.Parse(responseContent).OrderBy(s => s.Date); // VnDirect use DESC order by default, so reverse it.
         }
 
         private string FormatDateTime(DateTime dateTime)

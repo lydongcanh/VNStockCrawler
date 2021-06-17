@@ -19,10 +19,10 @@ namespace VNStockCrawler.Core
                 {
                     Code = item.code,
                     Date = item.date,
-                    OpenValue = item.open,
-                    CloseValue = item.close,
-                    HighValue = item.high,
-                    LowValue = item.low,
+                    Open = item.open,
+                    Close = item.close,
+                    High = item.high,
+                    Low = item.low,
                     AverageValue = item.average,
                     Volume = item.nmVolume + item.ptVolume
                 };
