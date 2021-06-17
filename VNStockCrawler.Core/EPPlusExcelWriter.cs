@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using OfficeOpenXml;
+using Microsoft.Office.Interop.Excel;
 
 namespace VNStockCrawler.Core
 {
@@ -21,8 +22,9 @@ namespace VNStockCrawler.Core
             // Create new excel file.
             var stockArray = stocks.ToArray();
             var newFile = CreateExcelFile(stockArray);
+            var fileName = Path.GetFileNameWithoutExtension(newFile.Name);
             using var excelPackage = new ExcelPackage(newFile);
-            var worksheet = excelPackage.Workbook.Worksheets.Add(newFile.Name);
+            var worksheet = excelPackage.Workbook.Worksheets.Add(fileName);
 
             // Setup headers.
             worksheet.Cells["A1"].Value = "DATE";
@@ -50,7 +52,15 @@ namespace VNStockCrawler.Core
                 worksheet.Cells[$"H{i}"].Value = length - i;
             }
 
+            // Save as xlsx.
             await excelPackage.SaveAsync();
+
+            // Save as csv.
+            Application app = new Application();
+            Workbook workbook = app.Workbooks.Open($"{SaveFilePath}.xlsx");
+            workbook.SaveAs($"{SaveFilePath}.csv", XlFileFormat.xlCSVWindows);
+            workbook.Close(false);
+            app.Quit();
         }
 
         private FileInfo CreateExcelFile(Stock[] stocks)
@@ -58,10 +68,10 @@ namespace VNStockCrawler.Core
             var fileName = BuildFileName(stocks);
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var folderPath = $"{desktopPath}/Stocks Data/{DateTime.Now:dd-MM-yyyy--HH-mm-ss}";
-            SaveFilePath = $"{folderPath}/{fileName}.xlsx";
+            SaveFilePath = $"{folderPath}/{fileName}".ToLower();
 
             Directory.CreateDirectory(folderPath);
-            return new FileInfo(SaveFilePath);
+            return new FileInfo($"{SaveFilePath}.xlsx");
         }
 
         private string BuildFileName(Stock[] stocks)
