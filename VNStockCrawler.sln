@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNStockCrawler.ConsoleClient", "VNStockCrawler.ConsoleClient\VNStockCrawler.ConsoleClient.csproj", "{57959B9D-98CC-4D6A-A8AA-534E4A808892}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VNStockCrawler.Core", "VNStockCrawler.Core\VNStockCrawler.Core.csproj", "{562A9D44-A465-4F29-BD38-2A5EBF65DB4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57959B9D-98CC-4D6A-A8AA-534E4A808892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57959B9D-98CC-4D6A-A8AA-534E4A808892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57959B9D-98CC-4D6A-A8AA-534E4A808892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57959B9D-98CC-4D6A-A8AA-534E4A808892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{562A9D44-A465-4F29-BD38-2A5EBF65DB4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562A9D44-A465-4F29-BD38-2A5EBF65DB4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{562A9D44-A465-4F29-BD38-2A5EBF65DB4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{562A9D44-A465-4F29-BD38-2A5EBF65DB4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B139CD4-E5C7-4284-ACA7-7F2682163AF1}
+	EndGlobalSection
+EndGlobal
