@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace VNStockCrawler.Core
 {
     public class Stock
     {
-        public string Code { get; set; }
+        public string Ticker { get; set; }
 
         public DateTime Date { get; set; }
 
@@ -18,7 +16,7 @@ namespace VNStockCrawler.Core
 
         public double Low { get; set; }
 
-        public double AverageValue { get; set; }
+        public double Average { get; set; }
 
         public double Volume { get; set; }
     }

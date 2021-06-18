@@ -17,13 +17,13 @@ namespace VNStockCrawler.Core
             {
                 yield return new Stock
                 {
-                    Code = item.code,
+                    Ticker = item.code,
                     Date = item.date,
                     Open = item.open,
                     Close = item.close,
                     High = item.high,
                     Low = item.low,
-                    AverageValue = item.average,
+                    Average = item.average,
                     Volume = item.nmVolume + item.ptVolume
                 };
             }

@@ -27,29 +27,26 @@ namespace VNStockCrawler.Core
             var worksheet = excelPackage.Workbook.Worksheets.Add(fileName);
 
             // Setup headers.
-            worksheet.Cells["A1"].Value = "DATE";
-            worksheet.Cells["B1"].Value = "CLOSE";
-            worksheet.Cells["C1"].Value = "TICKER";
-            worksheet.Cells["D1"].Value = "OPEN";
-            worksheet.Cells["E1"].Value = "HIGH";
-            worksheet.Cells["F1"].Value = "LOW";
-            worksheet.Cells["G1"].Value = "VOLUME";
-            worksheet.Cells["H1"].Value = "HELPER";
+            worksheet.Cells["A1"].Value = "Date";
+            worksheet.Cells["B1"].Value = "Open";
+            worksheet.Cells["C1"].Value = "High";
+            worksheet.Cells["D1"].Value = "Low";
+            worksheet.Cells["E1"].Value = "Close";
+            worksheet.Cells["F1"].Value = "Average";
+            worksheet.Cells["G1"].Value = "Volume";
 
             // Populate values.
             var startIndex = 2;
-            var length = stockArray.Length + startIndex;
-            for (int i = startIndex; i < length; i++)
+            for (int i = startIndex; i < stockArray.Length + startIndex; i++)
             {
                 var stock = stockArray[i - startIndex];
                 worksheet.Cells[$"A{i}"].Value = stock.Date.ToString("dd/MM/yyyy");
-                worksheet.Cells[$"B{i}"].Value = stock.Close;
-                worksheet.Cells[$"C{i}"].Value = stock.Code;
-                worksheet.Cells[$"D{i}"].Value = stock.Open;
-                worksheet.Cells[$"E{i}"].Value = stock.High;
-                worksheet.Cells[$"F{i}"].Value = stock.Low;
+                worksheet.Cells[$"B{i}"].Value = stock.Open;
+                worksheet.Cells[$"C{i}"].Value = stock.High;
+                worksheet.Cells[$"D{i}"].Value = stock.Low;
+                worksheet.Cells[$"E{i}"].Value = stock.Close;
+                worksheet.Cells[$"F{i}"].Value = stock.Average;
                 worksheet.Cells[$"G{i}"].Value = stock.Volume;
-                worksheet.Cells[$"H{i}"].Value = length - i;
             }
 
             // Save as xlsx.
@@ -79,7 +76,7 @@ namespace VNStockCrawler.Core
             if (stocks == null || !stocks.Any())
                 return $"empty_{DateTime.Now}";
 
-            var code = stocks.First().Code;
+            var code = stocks.First().Ticker;
             var fromYear = stocks.First().Date.Year;
             var toYear = stocks.Last().Date.Year;
 
