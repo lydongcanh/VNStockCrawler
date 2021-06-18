@@ -40,7 +40,7 @@ namespace VNStockCrawler.Core
             for (int i = startIndex; i < stockArray.Length + startIndex; i++)
             {
                 var stock = stockArray[i - startIndex];
-                worksheet.Cells[$"A{i}"].Value = stock.Date.ToString("dd/MM/yyyy");
+                worksheet.Cells[$"A{i}"].Value = stock.Date.ToString("yyyy-MM-dd");
                 worksheet.Cells[$"B{i}"].Value = stock.Open;
                 worksheet.Cells[$"C{i}"].Value = stock.High;
                 worksheet.Cells[$"D{i}"].Value = stock.Low;
